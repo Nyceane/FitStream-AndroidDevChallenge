@@ -23,8 +23,6 @@ Very first and foremost we need posenet example in Java from Google if possible,
 
 
 # Tell us about you
-A great idea is just one part of the equation; we also want to learn a bit more about you. Share with us some of your other projects so we can get an idea of how we can assist you with your project. 
-
 Peter Ma is a full stack engineer, Android developer and AI expert.  He has previously involved in 5 different startups and won more than 100 hackathons in the past.  Some of his accomplishments include speaking about mobile apps at TEDGlobal 2010, Winning 2015 AT&T Developer Summit grand prize and gave Secretary of State John Kerry and Vice Premier Liu Yandong of China, Winning Grand Prize at Virtual GovTech Tech and awarded by deputy prime minister his highness Mansoor of Dubai.  Some of his AI works includes BlueScan AI, an AI for skin cancer and Clean Water AI, a device that uses AI and microscopic cameras for water contamination.  
 
 Peter have previously worked on Android app for Catch Notes, Spotvite, Frienduel, Oncue Video app for Verizon, Calorie Count for about.com, and many other apps for both startup and his clients.
@@ -34,4 +32,4 @@ Serena Xu is a yoga instructor, who has previously worked in many technology sta
 Ethan Fan is an iOS/Android developer who is Co-Founder at Vimo Labs, he has over 10 years of app experience in fitness app industry.
 Sarah Han is a designer who lives in Los Angeles whom have won at least 50+ hackathons with me in the past.
 
-We’ve worked together a lot in the past.
+I have to capability and the motivation to take this project forward for #AndroidDevChallenge, and with the Google's help, we can definately make this world a healthier place through fitness streaming.
