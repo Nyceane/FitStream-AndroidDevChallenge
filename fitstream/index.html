@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
+  <meta name="application-name" content="veremax">
+  <meta name="description" content="a video theremin based using OpenPose">
+  <meta name="keywords" content="TensorFlow.js,OpenPose,MAX,Human Pose Estimator">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/veremax-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/veremax-16.png">
+  <link rel="shortcut icon" href="favicons/favicon.ico">
+
+  <link rel="stylesheet" type="text/css" href="css/fonts.css">
+  <link rel="stylesheet" type="text/css" href="css/veremax.css">
+  <link rel="stylesheet" type="text/css" href="css/glowing-button.css">
+  <link rel="stylesheet" type="text/css" href="css/loading-spinner.css">
+  <link rel="stylesheet" type="text/css" href="css/cursor.css">
+  <link rel="stylesheet" type="text/css" href="css/custom.css">
+  <link rel="stylesheet" type="text/css" href="css/shine.css">
+  <link rel="stylesheet" type="text/css" href="css/leaderboard.css">
+  <link rel="stylesheet" type="text/css" href="css/cover-video.css">
+  <link rel="stylesheet" type="text/css" href="css/chat.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
+  <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.21.7.min.js"></script>
+  <title>Fitstream - empowering yoga teachers, fitness professionals, dance instructors to stream live class</title>
+  <style>
+  body {
+    font-family: 'Titillium Web', sans-serif;
+  }
+  </style>
+</head>
+
+<body>
+
+  <div id="info" class="v-info">loading...</div>
+
+  <main id="main">
+
+    <!-- VIEW START STREAM -->
+    <div class="view-screen view-screen-start">
+      <img class="img-responsive transparent-start-cover" src="/images/pages/start-clean.png">
+      <div class="video-overlay">
+        <div class="overlay"></div>
+        <video autoplay muted loop>
+          <source src="/videos/beach-yoga.mp4" type="video/mp4">
+          <!-- <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4"> -->
+        </video>
+      </div>
+      <div class="glowingButton">
+        <a class="glowing"></a>
+      </div>
+    </div>
+
+    <!-- VIEW STREAM -->
+    <div class="view-screen view-screen-stream hidden">
+      <img src="/images/logo.png" class="img-responsive logo-image">
+      <h4 id="engagement" class="engagement shine">engagement
+          <span id="engagementnumber" class="engagement-number">50%</span>
+      </h4>
+      <!--<video id="video" playsinline controls="true"> </video> -->      
+      <div id="videos">
+        <div id="subscriber"></div>
+        <div id="publisher"></div>
+      </div>
+      <canvas id="output"></canvas>
+
+      <!-- click icons -->
+      <div class="row row-icons-stream hidden">
+          <!-- <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="click-icon-viewers">
+              <img src="/images/icons/icon-viewers.png" class="img-responsive">
+            </div>
+          </div> -->
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="click-icon-leaderboard">
+              <div id="subCount" class="circle-number-badge circle-number-badge-leaderboard" style="display: none;">1</div>
+              <img src="/images/icons/icon-leaderboard.png" class="img-responsive" style="padding: 30px;">
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="click-icon-chat">
+                <div class="circle-number-badge circle-number-badge-chat" style="display: none;">1</div>
+              <img src="/images/icons/icon-chat.png" class="img-responsive" style="padding: 30px;">
+            </div>
+          </div>
+      </div>
+    </div> <!-- end video-chat-stream -->
+
+    <!-- VIEW VIEWERS -->
+    <!-- <div class="view-screen view-screen-viewers hidden">
+      <img src="/images/icons/arrow-back.svg" class="close-screen-viewers close-arrow-back">
+      <img src="/images/icons/title-viewers.png" class="img-responsive title-icon">
+    </div> -->
+
+    <!-- VIEW LEADERBOARD -->
+    <div class="view-screen view-screen-leaderboard hidden">
+      <img src="/images/icons/arrow-back.svg" class="close-screen-leaderboard close-arrow-back">
+
+      <img src="/images/icons/title-leaderboard.png" class="img-responsive title-icon hidden">
+
+      <img src="/images/icons/icon-toggle.png" class="img-responsive toggle-leaderboard hidden">
+
+      <!-- spinner -->
+      <div class="leaderboard-spinner" style="text-align: center;">
+        <svg class="spinner-svg" viewBox="25 25 50 50">
+          <circle class="spinner-circle" cx="50" cy="50" r="20"></circle>
+        </svg>
+      </div>
+
+      <!-- content -->
+      <div class="leaderboard-content" style="display: none;">
+
+        <!-- LEADERBOARD TABLE -->
+        <div class="table-leaderboard" class="hidden">
+          <table class="table table-hover">
+            <!-- <thead>
+              <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+              </tr>
+            </thead> -->
+            <tbody id="tableviewers">
+              <!-- user 1 -->
+              <tr class="viewerrow">
+                <th class="table-leaderboard-number" scope="row">1</th>
+                <td id="viewer1" class="table-leaderboard-circle"></td>
+                <td class="table-leaderboard-user text-left">Ethan<span class="d-block">California</span></td>
+                <td id="ethan" class="table-leaderboard-statistics">0</td>
+              </tr>
+
+              <!-- user 2 -->
+              <tr class="viewerrow">
+                <th class="table-leaderboard-number" scope="row">2</th>
+                <td id="viewer2" class="table-leaderboard-circle"></td>
+                <td class="table-leaderboard-user text-left">Peter<span class="d-block">New York</span></td>
+                <td id="peter" class="table-leaderboard-statistics">0</td>
+              </tr>
+
+              <!-- user 3 -->
+              <tr class="viewerrow">
+                <th class="table-leaderboard-number" scope="row">3</th>
+                <td id="viewer3" class="table-leaderboard-circle"></td>
+                <td class="table-leaderboard-user text-left">Grace<span class="d-block">California</span></td>
+                <td id="grace" class="table-leaderboard-statistics">0</td>
+              </tr>
+
+              <!-- user 4 -->
+              <tr class="viewerrow">
+                <th class="table-leaderboard-number" scope="row">4</th>
+                <td id="viewer4" class="table-leaderboard-circle"></td>
+                <td class="table-leaderboard-user text-left">Hannah<span class="d-block">New York</span></td>
+                <td class="table-leaderboard-statistics">0</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+        <!-- END LEADERBOARD TABLE -->
+      </div>
+
+    </div>
+
+      <!-- VIEW CHAT -->
+    <div class="view-screen view-screen-chat hidden">
+      <img src="/images/icons/arrow-back.svg" class="close-screen-chat close-arrow-back">
+      <img src="/images/icons/title-chat.png" class="img-responsive title-icon hidden">
+
+      <div class="chat-window">
+        <!-- spinner -->
+        <div class="chat-spinner" style="text-align: center;">
+          <svg class="spinner-svg" viewBox="25 25 50 50">
+            <circle class="spinner-circle" cx="50" cy="50" r="20"></circle>
+          </svg>
+        </div>
+        <!-- content -->
+        <div class="chat-content" style="display: none;">
+          <div class="chat-date">Oct 2, 2019
+            </div>
+            <div class="mine hidden message-1">
+              Me: Hi, Is there an assisted move for the plank?
+            </div>
+            <div class="clearfix"></div>
+            <div class="mine hidden message-2">
+              Me: I am having a hard time keeping up!
+            </div>
+            <div class="clearfix"></div>
+            <div class="theirs hidden message-3">
+              I suggest to lower to a hands-and-knees position, 
+                and then walk the hands out to a plank position, 
+                either on the toes or knees. 
+            </div>
+            <div class="clearfix"></div>
+            <div class="mine hidden message-4">
+              Me: Wow, Thank you so much :]
+            </div>
+            <div class="clearfix"></div>
+            <div class="mine hidden message-5">
+              Me: I will try that out!
+            </div>
+            <div class="clearfix"></div>
+
+            <!-- INPUT -->
+            <div class="bottom-bar hidden">
+              <div class="chat">
+              <input type="text" placeholder="Type a message...">
+              <button type="submit" class="hidden btn-send">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+              </div>
+            </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div id="junk"></div>
+  </main>
+
+  <div id="control-panel" class="slider closed">
+    <button id="close-cp-btn" onclick="document.getElementById('control-panel').classList.add('closed')" title="close control panel">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="28" width="28">
+        <path fill="#ffffff" d="M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6L24 9.4z"/>
+      </svg>
+    </button>
+  </div>
+
+  <script src="https://unpkg.com/dat.gui"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0"></script>
+  <script type="module" src="js/coco-common.js"></script>
+  <script type="module" src="js/canvas-overlay.js"></script>
+  <script type="module" src="js/camera-util.js"></script>
+  <script type="module" src="js/control-panel.js"></script>
+  <script type="module" src="js/pose-estimator.js"></script>
+  <script type="module" src="js/veremax.js"></script>
+  <script type="module" src="js/interactions.js"></script>
+  <script src="local.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

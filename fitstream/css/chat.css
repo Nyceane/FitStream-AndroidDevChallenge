@@ -1,0 +1,90 @@
+
+/* CHAT */
+.chat-window {
+    background: #333333;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 20px;
+    font-size: 12px;
+    height: 65%;
+}
+.chat-date {
+    color: white;
+    text-align: center;
+    /* margin-right: 10px; */
+    padding: 10px 45px;
+    margin: 0 auto;
+    margin-bottom: -25px;
+    background: #c390f5;
+    width: fit-content;
+    border-radius: 20px;
+    position: relative;
+    top: -39px;
+}
+.mine {
+    /* color: #00ff04; */
+    color: #333333;
+    text-align: right;
+    margin-right: 10px;
+    padding: 10px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    background: #fed500;
+    width: fit-content;
+    border-radius: 12px 12px 0 12px;
+    float: right;
+}
+.theirs {
+    color: #333333;
+    /* color: #03ffff; */
+    text-align: left;
+    margin-left: 10px;
+    padding: 10px;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    background: #8fde5a;
+    width: fit-content;
+    border-radius: 12px 12px 12px 0;
+    float: left;
+}
+
+/* CHAT INPUT */
+.bottom-bar {
+    position: absolute;
+    width: -webkit-fill-available;
+    height: 55px;
+    margin: 16px;
+    bottom: 0;
+    padding: 20px;
+    background: #F9FBFF;
+    border-radius: 10px;
+}
+.bottom-bar input {
+    padding: 7px;
+    width: 74%;
+    left: 5%;
+    position: absolute;
+    border: 0;
+    top: 13px;
+    background: #F9FBFF;
+    color: #79C7C5;
+}
+.bottom-bar button {
+    position: absolute;
+    border: 0;
+    font-size: 1em;
+    color: #fed500;
+    top: 11px;
+    opacity: 0.8;
+    right: 14px;
+    background: #0187c4;
+    cursor: pointer;
+    outline: 0;
+    padding: 8px 8px 6px 6px;
+    border-radius: 5px;
+}
+.clearfix {
+    clear: both;
+}

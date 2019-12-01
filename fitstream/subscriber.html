@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
+  <meta name="application-name" content="veremax">
+  <meta name="description" content="a video theremin based using OpenPose">
+  <meta name="keywords" content="TensorFlow.js,OpenPose,MAX,Human Pose Estimator">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/veremax-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/veremax-16.png">
+  <link rel="shortcut icon" href="favicons/favicon.ico">
+
+  <link rel="stylesheet" type="text/css" href="css/fonts.css">
+  <link rel="stylesheet" type="text/css" href="css/veremax.css">
+    <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
+
+  <title>veremax | a video theremin based using OpenPose</title>
+</head>
+<body>
+
+  <div id="info" class="v-info">loading...</div>
+
+  <main id="main">
+<!--         <video id="video" playsinline controls="true"> </video> 
+ -->      <div id="videos">
+        <div id="subscriber"></div>
+        <div id="publisher"></div>
+      </div>
+
+        <canvas id="output"></canvas>
+  </main>
+
+
+  <div id="control-panel" class="slider closed">
+    <button id="close-cp-btn" onclick="document.getElementById('control-panel').classList.add('closed')" title="close control panel">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="28" width="28">
+        <path fill="#ffffff" d="M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6L24 9.4z"/>
+      </svg>
+    </button>
+  </div>
+
+
+  <script src="https://unpkg.com/dat.gui"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0"></script>
+  <script type="module" src="js/coco-common.js"></script>
+  <script type="module" src="js/canvas-overlay.js"></script>
+  <script type="module" src="js/camera-util.js"></script>
+  <script type="module" src="js/control-panel.js"></script>
+  <script type="module" src="js/pose-estimator.js"></script>
+  <script type="module" src="js/veremaxsub.js"></script>
+</body>
+</html>

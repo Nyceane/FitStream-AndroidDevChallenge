@@ -1,0 +1,43 @@
+/* leaderboard */
+.toggle-leaderboard {
+    padding: 30px;
+}
+.table-leaderboard {
+    background: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 55%;
+}
+
+.table-leaderboard-user {
+    font-size: 22px;
+    font-weight: bold;
+    padding-top: 10px !important;
+}
+.table-leaderboard-user span {
+    font-size: 14px;
+    color: gray;
+    font-weight: unset;
+    padding-top: 10px !important;
+}
+.table-leaderboard-circle-image {
+    border: #01bbb6 6px solid;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+}
+.table-leaderboard-circle {
+    width: 90px;
+}
+.table-leaderboard-statistics {
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 20px !important;
+}
+.table-leaderboard-number {
+    font-size: 20px;
+    width: 20px;
+    padding-top: 25px !important;
+}

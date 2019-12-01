@@ -1,0 +1,94 @@
+#engagement{
+    visibility: hidden;
+}
+
+.viewerrow {
+    visibility: visible;
+}
+
+.d-block {
+    display: block !important;
+}
+.logo-image {
+    z-index: 999;
+    position: absolute;
+    right: 0;
+    padding: 8px 16px;
+    opacity: 0.9;
+    width: 50%;
+    margin-top: 4px;
+}
+.engagement {
+    z-index: 999;
+    position: absolute;
+    background: #01bbb6;
+    text-align: right;
+    color: white;
+    right: 0;
+    padding: 5px 12px;
+    border: #01acc4 5px solid;
+    border-radius: 25px;
+    opacity: 0.85;
+    margin-right: 20px;
+    margin-top: 50px;
+    font-size: 13px;
+}
+.engagement span.engagement-number {
+    display: block;
+    font-size: 23px;
+}
+.engagement span.engagement-number:before {
+    content: "";
+    display: block;
+    background: url("/images/icons/engagement-person.png") no-repeat;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin: 5px 6px 0 0;
+}
+/* view screens from icon buttons */
+.view-screen-viewers {
+    background: #01acc4;
+    height: 100vh;
+}
+.view-screen-leaderboard {
+    background: #01bbb6;
+    height: 100vh;
+}
+.view-screen-chat {
+    background: #0187c4;
+    height: 100vh;
+}
+.title-icon {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+.close-arrow-back {
+    width: 25px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.circle-number-badge {
+    background: #01bbb6;
+    color: white;
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    border-radius: 50%;
+    position: absolute;
+    right: 29%;
+    top: 17%;
+    opacity: 0.85;
+    text-indent: 8px;
+    border: #01acc4 10px solid;
+}
+
+.row-icons-stream {
+    position: absolute;
+    bottom: 0;
+    z-index: 99;
+}
+
